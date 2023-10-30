@@ -44,21 +44,24 @@ Before you begin, ensure you have met the following requirements:
 
    ```shell
    git clone https://github.com/yourusername/ems-backend-service.git
+   ```
    
 2. Navigate to the project directory:
 
   ```shell
   cd ems-backend-service
-
-3.Build the project:
+  ```
+3. Build the project:
 
    ```shell
    mvn clean install
-
+   ```
 4. Start the application:
 
-```shell
-java -jar target/ems-backend-service-1.0.0.jar
+   ```shell
+   java -jar target/ems-backend-service-1.0.0.jar
+   ```
+
 ### Usage
 The EMS backend service runs on http://localhost:8080 by default.
 Use your favorite API client (e.g., Postman, cURL) or integrate it with your frontend application to interact with the API.
