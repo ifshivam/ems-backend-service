@@ -44,4 +44,39 @@ Before you begin, ensure you have met the following requirements:
 
    ```shell
    git clone https://github.com/yourusername/ems-backend-service.git
+   
+Navigate to the project directory:
+
+shell
+Copy code
+cd ems-backend-service
+Build the project:
+
+shell
+Copy code
+mvn clean install
+Start the application:
+
+shell
+Copy code
+java -jar target/ems-backend-service-1.0.0.jar
+Usage
+The EMS backend service runs on http://localhost:8080 by default.
+Use your favorite API client (e.g., Postman, cURL) or integrate it with your frontend application to interact with the API.
+API Documentation
+API documentation for the EMS backend service can be accessed at:
+
+Swagger UI (when running the application)
+Configuration
+Customize application properties in src/main/resources/application.properties to configure database connections, security settings, and other application-specific properties.
+Contributing
+To contribute to this project, follow these steps:
+
+Fork this repository.
+Create a branch: git checkout -b feature/new-feature.
+Make your changes and commit them: git commit -m 'Add new feature'.
+Push to your fork: git push origin feature/new-feature.
+Submit a pull request.
+License
+This project is licensed under the MIT License. See the LICENSE file for details.   
 
