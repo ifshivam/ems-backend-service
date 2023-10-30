@@ -69,16 +69,19 @@ API Documentation
 API documentation for the EMS backend service can be accessed at:
 
 Swagger UI (when running the application)
-Configuration
+
+### Configuration
 Customize application properties in src/main/resources/application.properties to configure database connections, security settings, and other application-specific properties.
-Contributing
+
+### Contributing
 To contribute to this project, follow these steps:
 
-Fork this repository.
-Create a branch: git checkout -b feature/new-feature.
-Make your changes and commit them: git commit -m 'Add new feature'.
-Push to your fork: git push origin feature/new-feature.
-Submit a pull request.
-License
+1. Fork this repository.
+2. Create a branch: git checkout -b feature/new-feature.
+3. Make your changes and commit them: git commit -m 'Add new feature'.
+4. Push to your fork: git push origin feature/new-feature.
+5. Submit a pull request.
+
+### License
 This project is licensed under the MIT License. See the LICENSE file for details.   
 
