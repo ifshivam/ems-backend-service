@@ -48,9 +48,9 @@ Before you begin, ensure you have met the following requirements:
    
 2. Navigate to the project directory:
 
-  ```shell
-  cd ems-backend-service
-  ```
+   ```shell
+   cd ems-backend-service
+   ```
 3. Build the project:
 
    ```shell
