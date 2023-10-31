@@ -63,7 +63,7 @@ Before you begin, ensure you have met the following requirements:
    ```
 
 ### Usage
-The EMS backend service runs on http://localhost:8080 by default.
+The EMS backend service runs on http://localhost:8081 by default.
 Use your favorite API client (e.g., Postman, cURL) or integrate it with your frontend application to interact with the API.
 API Documentation
 API documentation for the EMS backend service can be accessed at:
