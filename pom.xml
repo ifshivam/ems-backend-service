@@ -11,6 +11,7 @@
 	<groupId>com.emp</groupId>
 	<artifactId>mgmt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>emp-mgmt</name>
 	<description>Spring Boot Project for Employee Management</description>
 	<properties>
@@ -83,6 +84,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>ems_core_service</finalName>
 	</build>
 
 </project>

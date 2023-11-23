@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  mysql_ems:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123qwe
+      MYSQL_DATABASE: ems_core
+      MYSQL_USER: ems
+      MYSQL_PASSWORD: 123qwe
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - ems-network
+
+  ems_core_service:
+    build: ../.
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_ems:3306/ems_core
+      SPRING_DATASOURCE_USERNAME: ems
+      SPRING_DATASOURCE_PASSWORD: 123qwe
+    ports:
+      - "8085:8085"
+    depends_on:
+      - mysql_ems
+    networks:
+      - ems-network
+
+networks:
+  ems-network:
+  
+volumes:
+ mysql-data:

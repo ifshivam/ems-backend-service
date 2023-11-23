@@ -1,0 +1,34 @@
+//Asume you have docker installed and running on your machine
+
+container commands
+List :   docker ps -a
+Stop :   docker stop <container id1> <container id2>   ( docker stop $(docker ps -a -q) to stop all container )
+start:   docker start <container id1> <container id2>  ( docker start $(docker ps -a -q) to start all container )
+remove : docker rm <container id1> <container id2>     ( docker rm $(docker ps -a -q) to remove all container )
+enter :  docker exec -it <container id> bash/sh
+
+image commands
+List :   docker images
+remove : docker rmi <image id1> <image id2>
+
+network commands
+List :   docker network ls
+create : docker network create <network name>
+remove : docker network rm <network id1> <network id2>
+
+To RUN mysql dockerfile
+
+1. Navigate to Folder where Dockerfile is present then run :
+	docker build -t psql_ems_img .
+	docker run -d -p 3306:3306 --name mysql_ems_container mysql_ems_img
+
+2. To get an ip of container that will be place in application.properties :
+	docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container id>
+
+
+To RUN docker-compose file
+
+1. Navigate to folder where docker-compose file 
+2. Create network named "ems-network"
+3. Run
+	docker-compose up -d
