@@ -58,8 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/auth/login").anonymous()
                 .antMatchers("/api/admin/*").hasRole(Role.ADMIN.name())
                 .antMatchers("/api/employee/*"
-                             , "/api/auth/logout/*").hasAnyRole(Role.ADMIN.name(),
-                                                               Role.EMPLOYEE.name())
+                             , "/api/auth/logout/*").permitAll()
                 .and().exceptionHandling()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint).and()
