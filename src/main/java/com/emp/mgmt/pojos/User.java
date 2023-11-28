@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "user")
+@Table(name = "ems_user")
 public class User implements UserDetails {
 
     @Id
@@ -39,7 +39,7 @@ public class User implements UserDetails {
 
     Boolean isDeleted = false;
 
-    Boolean isActive = false;
+    Boolean isActive = true;
 
     Boolean isExpired = false;
 
