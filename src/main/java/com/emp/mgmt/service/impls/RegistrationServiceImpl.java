@@ -63,7 +63,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         GrantedAuthorityImpl role = new GrantedAuthorityImpl();
-        role.setAuthority(Role.EMPLOYEE.name());
+        role.setAuthority(Role.EMPLOYEE.getKey());
         user.setGrantedAuthorities(Arrays.asList(role));
 
         employee.setUser(user);

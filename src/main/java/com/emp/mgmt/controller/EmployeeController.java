@@ -5,6 +5,7 @@ import com.emp.mgmt.co_dto.co.FilterEmployeeSaveCO;
 import com.emp.mgmt.co_dto.dto.AbstractEmployeeDTO;
 import com.emp.mgmt.co_dto.dto.EmployeeDTO;
 import com.emp.mgmt.exception.GlobalException;
+import com.emp.mgmt.pojos.User;
 import com.emp.mgmt.service.EmployeeService;
 import com.emp.mgmt.utils.Helper;
 import com.emp.mgmt.utils.ResponseHandler;
@@ -33,9 +34,9 @@ public class EmployeeController {
     @GetMapping("/profile")
     public ResponseEntity<ResponseHandler<List<AbstractEmployeeDTO>>> getMyProfile(@RequestHeader("Authorization") String authorizationHeader) throws GlobalException {
 
-        String currentUserEmail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         FilterEmployeeSaveCO filterEmployee = new FilterEmployeeSaveCO();
-        filterEmployee.setEmail(currentUserEmail);
+        filterEmployee.setEmail(currentUser.getEmail());
         ResponseHandler<List<AbstractEmployeeDTO>> responseHandler = employeeService.getEmployees(filterEmployee);
         return new ResponseEntity<>(responseHandler, HttpStatus.valueOf(responseHandler.getStatusCode()));
     }

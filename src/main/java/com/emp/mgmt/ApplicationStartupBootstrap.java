@@ -54,7 +54,7 @@ public class ApplicationStartupBootstrap {
             user.setName("Yash Kiran");
 
             GrantedAuthorityImpl authority = new GrantedAuthorityImpl();
-            authority.setAuthority(Role.ADMIN.name());
+            authority.setAuthority(Role.ADMIN.getKey());
 
             user.setGrantedAuthorities(Arrays.asList(authority));
 

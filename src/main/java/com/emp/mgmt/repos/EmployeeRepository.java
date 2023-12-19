@@ -17,7 +17,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Employee findByUser(User user);
 
-    @Query(nativeQuery = true, value = "select * from employee where user_id in (select id from user where name = :name)")
+    @Query(nativeQuery = true, value = "select * from employee where user_id in (select id from ems_user where name = :name)")
     Page<Employee> findByName(@Param("name") String name, Pageable pageable);
 
     Page<Employee> findALlByDepartment(Department department, Pageable pageable);

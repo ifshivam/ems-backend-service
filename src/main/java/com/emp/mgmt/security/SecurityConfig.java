@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -52,16 +51,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.cors().and().csrf().disable()
+        httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/register",
-                        "/api/auth/login").anonymous()
-                .antMatchers("/api/admin/*").hasRole(Role.ADMIN.name())
-                .antMatchers("/api/employee/*"
-                             , "/api/auth/logout/*").permitAll()
-                .and().exceptionHandling()
+                .antMatchers("/api/register", "/api/auth/login").anonymous()
+                .antMatchers("/api/admin/**").hasRole("ADMIN")
+                .antMatchers("/api/employee/**", "/api/auth/logout/**").authenticated()
+                .anyRequest().denyAll()
                 .and()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint).and()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint)
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
