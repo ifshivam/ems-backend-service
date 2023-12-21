@@ -1,6 +1,5 @@
 package com.emp.mgmt.security;
 
-import com.emp.mgmt.constants.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Autowired
-    UnauthorizedEntryPoint unauthorizedEntryPoint;
+    UnauthorizedEntryPointAndAccessDeniedHandler unauthorizedEntryPointAndAccessDeniedHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -58,7 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/employee/**", "/api/auth/logout/**").authenticated()
                 .anyRequest().denyAll()
                 .and()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint)
+                .exceptionHandling().authenticationEntryPoint(unauthorizedEntryPointAndAccessDeniedHandler)
+                .accessDeniedHandler(unauthorizedEntryPointAndAccessDeniedHandler)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

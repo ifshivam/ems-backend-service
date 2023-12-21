@@ -18,13 +18,14 @@ import org.springframework.web.context.request.WebRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class GlobalErrorHandler implements ErrorController {
+public class GlobalExceptionErrorHandler implements ErrorController {
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -68,6 +69,7 @@ public class GlobalErrorHandler implements ErrorController {
                 HttpStatus.BAD_REQUEST.value());
         return new ResponseEntity<>(responseHandler, HttpStatus.valueOf(responseHandler.getStatusCode()));
     }
+
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleException(Exception e, WebRequest request) {

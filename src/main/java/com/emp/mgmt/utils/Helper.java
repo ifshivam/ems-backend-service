@@ -69,7 +69,7 @@ public class Helper {
     public void isCurrentUser(String email) throws GlobalException {
         String currentUserEmail = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         if (!currentUserEmail.equals(email)){
-            throw new GlobalException(AppResponse.RESTRICTED);
+            throw new GlobalException(AppResponse.ACCESS_DENIED);
         }
     }
 }
